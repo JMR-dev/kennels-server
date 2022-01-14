@@ -3,79 +3,79 @@ EMPLOYEES = [
       "id": 1,
       "name": "Jessica Younker",
       "email": "jessica@younker.com",
-      "employee": true
+      "employee": True
     },
     {
       "id": 2,
       "name": "Jordan Nelson",
       "email": "jordan@nelson.com",
-      "employee": true
+      "employee": True
     },
     {
       "id": 3,
       "name": "Zoe LeBlanc",
       "email": "zoe@leblanc.com",
-      "employee": true
+      "employee": True
     },
     {
       "name": "Meg Ducharme",
       "email": "meg@ducharme.com",
       "id": 4,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Hannah Hall",
       "email": "hannah@hall.com",
       "id": 5,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Emily Lemmon",
       "email": "emily@lemmon.com",
       "id": 6,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Jordan Castelloe",
       "email": "jordan@castelloe.com",
       "id": 7,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Leah Gwin",
       "email": "leah@gwin.com",
       "id": 8,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Caitlin Stein",
       "email": "caitlin@stein.com",
       "id": 9,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Greg Korte",
       "email": "greg@korte.com",
       "id": 10,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Charisse Lambert",
       "email": "charisse@lambert.com",
       "id": 11,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Madi Peper",
       "email": "madi@peper.com",
       "id": 12,
-      "employee": true
+      "employee": True
     },
     {
       "name": "Jenna Solis",
       "email": "jenna@solis.com",
       "id": 14,
-      "employee": true
+      "employee": True
     },
 
 ]
