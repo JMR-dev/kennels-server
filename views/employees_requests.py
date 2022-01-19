@@ -2,80 +2,71 @@ EMPLOYEES = [
     {
       "id": 1,
       "name": "Jessica Younker",
-      "email": "jessica@younker.com",
-      "employee": True
+      "email": "jessica@younker.com"
+ 
     },
     {
       "id": 2,
       "name": "Jordan Nelson",
-      "email": "jordan@nelson.com",
-      "employee": True
+      "email": "jordan@nelson.com"
+    
     },
     {
       "id": 3,
       "name": "Zoe LeBlanc",
-      "email": "zoe@leblanc.com",
-      "employee": True
+      "email": "zoe@leblanc.com"
+      
     },
     {
       "name": "Meg Ducharme",
       "email": "meg@ducharme.com",
-      "id": 4,
-      "employee": True
+      "id": 4
     },
     {
       "name": "Hannah Hall",
       "email": "hannah@hall.com",
-      "id": 5,
-      "employee": True
+      "id": 5
+      
     },
     {
       "name": "Emily Lemmon",
       "email": "emily@lemmon.com",
-      "id": 6,
-      "employee": True
+      "id": 6
     },
     {
       "name": "Jordan Castelloe",
       "email": "jordan@castelloe.com",
-      "id": 7,
-      "employee": True
+      "id": 7
     },
     {
       "name": "Leah Gwin",
       "email": "leah@gwin.com",
-      "id": 8,
-      "employee": True
+      "id": 8
     },
     {
       "name": "Caitlin Stein",
       "email": "caitlin@stein.com",
-      "id": 9,
-      "employee": True
+      "id": 9
     },
     {
       "name": "Greg Korte",
       "email": "greg@korte.com",
-      "id": 10,
-      "employee": True
+      "id": 10
     },
     {
       "name": "Charisse Lambert",
       "email": "charisse@lambert.com",
-      "id": 11,
-      "employee": True
+      "id": 11
     },
     {
       "name": "Madi Peper",
       "email": "madi@peper.com",
-      "id": 12,
-      "employee": True
+      "id": 12
     },
     {
       "name": "Jenna Solis",
       "email": "jenna@solis.com",
-      "id": 14,
-      "employee": True
+      "id": 14
     },
 
 ]
@@ -122,3 +113,13 @@ def delete_employee(id):
     # If the employee was found, use pop(int) to remove it from list
     if employee_index >= 0:
         EMPLOYEES.pop(employee_index)
+        
+
+def update_employee(id, new_employee):
+    # Iterate the EMPLOYEES list, but use enumerate() so that
+    # you can access the index value of each item.
+    for index, employee in enumerate(EMPLOYEES):
+        if employee["id"] == id:
+            # Found the employee. Update the value.
+            EMPLOYEES[index] = new_employee
+            break
