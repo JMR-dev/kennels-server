@@ -1,11 +1,13 @@
 LOCATIONS = [ 
     {
       "id": 1,
-      "name": "Nashville North"
+      "name": "Nashville North",
+      "address": "389 Deumbrion Street, Nashville, TN, 37909"
     },
     {
       "id": 2,
-      "name": "Nashville South"
+      "name": "Nashville South",
+      "address":"1783 Thompson Lane, Nashville, TN, 37867"
     }
   ,
 ]
