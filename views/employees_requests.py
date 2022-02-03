@@ -40,15 +40,31 @@ def get_all_employees():
     # Use `json` package to properly serialize list as JSON
     return json.dumps(employees)
 
-def get_single_employee():
-    requested_employee = None
+def get_single_employee(id):
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
 
+        # Use a ? parameter to inject a variable's value
+        # into the SQL statement.
+        db_cursor.execute("""
+        SELECT
+            e.id,
+            e.name,
+            e.address,
+            e.location_id
+        FROM employee e
+        WHERE e.id = ?
+        """, ( id, ))
 
-    for employee in EMPLOYEES:
-        if EMPLOYEES["id"] == id:
-            requested_EMPLOYEE = employee
+        # Load the single result into memory
+        data = db_cursor.fetchone()
+        
+        employee = Employee(data['id'], data['name'], data['address'],
+                            data['location_id']
+                            )
 
-    return requested_employee
+        return json.dumps(employee.__dict__)
 
 def create_employee(employee):
     # Get the id value of the last location in the list

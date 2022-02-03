@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models.customer import Customer
 
 def get_all_customers():
     # Open a connection to the database
@@ -16,7 +17,7 @@ def get_all_customers():
             c.name,
             c.address,
             c.email,
-            c.password,
+            c.password
         FROM customer c
         """)
 
@@ -32,7 +33,7 @@ def get_all_customers():
             # Create an customer instance from the current row.
             # Note that the database fields are specified in
             # exact order of the parameters defined in the
-            # Animal class above.
+            # Customer class above.
             customer = Customer(row['id'], row['name'], row['address'],
                             row['email'], row['password'],
                             )
@@ -43,15 +44,32 @@ def get_all_customers():
     return json.dumps(customers)
 
 
-def get_single_customer():
-    requested_customer = None
+def get_single_customer(id):
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
 
+        # Use a ? parameter to inject a variable's value
+        # into the SQL statement.
+        db_cursor.execute("""
+        SELECT                     
+            c.id,
+            c.name,
+            c.address,
+            c.email,
+            c.password
+        FROM customer c
+        WHERE c.id = ?
+        """, ( id, ))
 
-    for customer in CUSTOMERS:
-        if customer["id"] == id:
-            requested_customer = customer
+        # Load the single result into memory
+        data = db_cursor.fetchone()
+        
+        customer = Customer(data['id'], data['name'], data['address'],
+                            data['email'], data['password']
+                            )
 
-    return requested_customer
+        return json.dumps(customer.__dict__)
 
 def create_customer(customer):
     # Get the id value of the last location in the list
