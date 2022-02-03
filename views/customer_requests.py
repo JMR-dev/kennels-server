@@ -1,3 +1,6 @@
+import sqlite3
+import json
+
 def get_all_customers():
     # Open a connection to the database
     with sqlite3.connect("./kennel.sqlite3") as conn:
@@ -14,11 +17,11 @@ def get_all_customers():
             c.address,
             c.email,
             c.password,
-        FROM animal a
+        FROM customer c
         """)
 
-        # Initialize an empty list to hold all animal representations
-        animals = []
+        # Initialize an empty list to hold all customer representations
+        customers = []
 
         # Convert rows of data into a Python list
         dataset = db_cursor.fetchall()
@@ -26,18 +29,18 @@ def get_all_customers():
         # Iterate list of data returned from database
         for row in dataset:
 
-            # Create an animal instance from the current row.
+            # Create an customer instance from the current row.
             # Note that the database fields are specified in
             # exact order of the parameters defined in the
             # Animal class above.
-            animal = Animal(row['id'], row['name'], row['breed'],
+            customer = Customer(row['id'], row['name'], row['breed'],
                             row['status'], row['location_id'],
                             row['customer_id'])
 
-            animals.append(animal.__dict__)
+            customers.append(customer.__dict__)
 
     # Use `json` package to properly serialize list as JSON
-    return json.dumps(animals)
+    return json.dumps(customers)
 
 
 def get_single_customer():
