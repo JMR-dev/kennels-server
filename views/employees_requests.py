@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models.employee import Employee
 
 def get_all_employees():
     # Open a connection to the database
@@ -15,8 +16,7 @@ def get_all_employees():
             e.id,
             e.name,
             e.address,
-            e.email,
-            e.password,
+            e.location_id
         FROM employee e
         """)
 
@@ -33,9 +33,7 @@ def get_all_employees():
             # Note that the database fields are specified in
             # exact order of the parameters defined in the
             # Animal class above.
-            employee = Employee(row['id'], row['name'], row['breed'],
-                            row['status'], row['location_id'],
-                            row['employee_id'])
+            employee = Employee(row['id'], row['name'], row['address'],row['location_id'])
 
             employees.append(employee.__dict__)
 
